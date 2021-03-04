@@ -14,9 +14,9 @@ extension DogService: TargetType {
     var path: String {
         switch self {
         case .allBreeds:
-            return "/api/json/v1/1/search.php"
+            return "/api/breeds/list/all"
         case .randomImage:
-            return "/api/json/v1/1/lookup.php"
+            return "/api/breeds/image/random"
         }
     }
 
@@ -27,7 +27,7 @@ extension DogService: TargetType {
         }
     }
     var task: Task {
-        switch self {g)
+        switch self {
         case .randomImage, .allBreeds:
             return .requestPlain
         }

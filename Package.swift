@@ -12,7 +12,7 @@ let package = Package(
             targets: ["Network"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/mikeshep/lm-dog-Domain", from: "1.0.2"),
+        .package(name: "Domain", url: "https://github.com/mikeshep/lm-dog-Domain", from: "1.0.2"),
         .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "13.0.0"))
     ],
     targets: [
@@ -20,9 +20,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "Network",
-            dependencies: []),
+            dependencies: [.product(name: "RxMoya", package: "Moya"), "Domain"]),
         .testTarget(
             name: "NetworkTests",
-            dependencies: ["Network"]),
+            dependencies: ["Network", "Domain", .product(name: "RxMoya", package: "Moya")]),
     ]
 )

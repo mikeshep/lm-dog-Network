@@ -11,9 +11,13 @@ import RxMoya
 import RxSwift
 import Alamofire
 import SystemConfiguration
+import Domain
 
+public protocol Provider {
+    
+}
 
-class DogProvider {
+class DogProvider: Provider {
 
     private let provider: MoyaProvider<DogService>
     fileprivate let reachability: SCNetworkReachability? = SCNetworkReachabilityCreateWithName(nil, "www.google.com")

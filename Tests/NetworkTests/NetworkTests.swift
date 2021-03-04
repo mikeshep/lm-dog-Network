@@ -48,5 +48,6 @@ final class NetworkTests: XCTestCase {
     
     static var allTests = [
         ("test_get_all_breeds", test_get_all_breeds),
+        ("test_get_ramdom_image", test_get_ramdom_image)
     ]
 }

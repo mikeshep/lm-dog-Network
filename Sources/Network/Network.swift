@@ -23,4 +23,8 @@ public struct DogAPI {
     public func getAllSubBreeds(for breed: String) -> Single<SubBreedsResponse> {
         return provider.request(.allSubBreeds(breed: breed))
     }
+    
+    public func getBreedImages(_ breed: Breed) -> Single<MultipleImageResponse> {
+        return provider.request(.images(breed: breed))
+    }
 }

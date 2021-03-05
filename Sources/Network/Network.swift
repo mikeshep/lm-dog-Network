@@ -20,7 +20,7 @@ public struct DogAPI {
         return provider.request(.randomImage)
     }
     
-    func getAllSubBreeds(for breed: String) -> Single<SubBreedsResponse> {
+    public func getAllSubBreeds(for breed: String) -> Single<SubBreedsResponse> {
         return provider.request(.allSubBreeds(breed: breed))
     }
 }

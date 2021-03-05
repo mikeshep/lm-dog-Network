@@ -12,7 +12,7 @@ let package = Package(
             targets: ["Network"]),
     ],
     dependencies: [
-        .package(name: "Domain", url: "https://github.com/mikeshep/lm-dog-Domain", from: "1.0.2"),
+        .package(name: "Domain", url: "https://github.com/mikeshep/lm-dog-Domain", from: "1.0.3"),
         .package(url: "https://github.com/Moya/Moya.git", .upToNextMajor(from: "13.0.0"))
     ],
     targets: [

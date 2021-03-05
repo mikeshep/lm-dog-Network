@@ -16,13 +16,11 @@ public struct DogAPI {
         return provider.request(.allBreeds)
     }
     
-    public func getRandomImage() -> Single<ImageResponseL> {
+    public func getRandomImage() -> Single<ImageResponse> {
         return provider.request(.randomImage)
     }
-}
-
-
-public struct ImageResponseL: Codable {
-    public let message: URL
-    let status: String
+    
+    func getAllSubBreeds(for breed: String) -> Single<SubBreedsResponse> {
+        return provider.request(.allSubBreeds(breed: breed))
+    }
 }

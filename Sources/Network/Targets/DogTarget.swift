@@ -10,31 +10,35 @@ import Foundation
 
 // MARK: - TargetType Protocol Implementation
 extension DogService: TargetType {
+    
     var baseURL: URL { return URL(string: "https://dog.ceo")! }
+    
     var path: String {
         switch self {
         case .allBreeds:
             return "/api/breeds/list/all"
         case .randomImage:
             return "/api/breeds/image/random"
+        case .allSubBreeds(let breed):
+            return "/api/breed/\(breed)/list"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .allBreeds, .randomImage:
+        case .allBreeds, .randomImage, .allSubBreeds:
             return .get
         }
     }
     var task: Task {
         switch self {
-        case .randomImage, .allBreeds:
+        case .randomImage, .allBreeds, .allSubBreeds:
             return .requestPlain
         }
     }
     var sampleData: Data {
         switch self {
-        case .randomImage, .allBreeds:
+        case .randomImage, .allBreeds, .allSubBreeds:
             return "".utf8Encoded
         }
     }

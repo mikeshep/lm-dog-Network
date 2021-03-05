@@ -78,10 +78,27 @@ final class NetworkTests: XCTestCase {
         waitForExpectations(timeout: 2)
     }
     
+    func test_get_all_breeds_images_affenpinscher() {
+        //Given
+        let expect = expectation(description: "Waiting for request...")
+        
+        //When
+        api.getBreedImages("affenpinscher")
+            .subscribe { response in
+                //Then
+                expect.fulfill()
+            } onError: { (error) in
+                //Then
+                XCTFail("Error \(error)")
+            }.disposed(by: disposeBag)
+        waitForExpectations(timeout: 2)
+    }
+    
     static var allTests = [
         ("test_get_all_breeds", test_get_all_breeds),
         ("test_get_ramdom_image", test_get_ramdom_image),
         ("test_get_all_subbreeds_for_hound", test_get_all_subbreeds_for_hound),
-        ("test_get_all_subbreeds_for_affenpinscher_isEmpty", test_get_all_subbreeds_for_affenpinscher_isEmpty)
+        ("test_get_all_subbreeds_for_affenpinscher_isEmpty", test_get_all_subbreeds_for_affenpinscher_isEmpty),
+        ("test_get_all_breeds_images_affenpinscher", test_get_all_breeds_images_affenpinscher)
     ]
 }

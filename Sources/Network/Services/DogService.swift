@@ -11,4 +11,5 @@ enum DogService {
     case allBreeds
     case randomImage
     case allSubBreeds(breed: String)
+    case images(breed: String)
 }

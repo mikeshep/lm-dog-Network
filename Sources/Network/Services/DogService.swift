@@ -6,10 +6,13 @@
 //
 
 import Foundation
+import Domain
 
 enum DogService {
     case allBreeds
     case randomImage
-    case allSubBreeds(breed: String)
-    case images(breed: String)
+    case allSubBreeds(breed: Breed)
+    case images(breed: Breed)
+    case randomBreedImage(breed: Breed)
+    case randomSubBreedImage(breed: Breed, subBreed: SubBreed)
 }

@@ -23,24 +23,28 @@ extension DogService: TargetType {
             return "/api/breed/\(breed)/list"
         case .images(let breed):
             return "/api/breed/\(breed)/images"
+        case .randomBreedImage(let breed):
+            return "/api/breed/\(breed)/images/random"
+        case .randomSubBreedImage(let breed, let subBreed):
+            return "/api/breed/\(breed)/\(subBreed)/images/random"
         }
     }
 
     var method: Moya.Method {
         switch self {
-        case .allBreeds, .randomImage, .allSubBreeds, .images:
+        case .allBreeds, .randomImage, .allSubBreeds, .images, .randomBreedImage, .randomSubBreedImage:
             return .get
         }
     }
     var task: Task {
         switch self {
-        case .randomImage, .allBreeds, .allSubBreeds, .images:
+        case .randomImage, .allBreeds, .allSubBreeds, .images, .randomBreedImage, .randomSubBreedImage:
             return .requestPlain
         }
     }
     var sampleData: Data {
         switch self {
-        case .randomImage, .allBreeds, .allSubBreeds, .images:
+        case .randomImage, .allBreeds, .allSubBreeds, .images, .randomBreedImage, .randomSubBreedImage:
             return "".utf8Encoded
         }
     }

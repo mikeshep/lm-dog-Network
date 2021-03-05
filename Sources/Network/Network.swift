@@ -27,4 +27,12 @@ public struct DogAPI {
     public func getBreedImages(_ breed: Breed) -> Single<MultipleImageResponse> {
         return provider.request(.images(breed: breed))
     }
+    
+    public func getBreedRandomImage(_ breed: Breed) -> Single<ImageResponse> {
+        return provider.request(.randomBreedImage(breed: breed))
+    }
+    
+    public func getSubBreedRandomImage(_ breed: Breed, subBreed: SubBreed) -> Single<ImageResponse> {
+        return provider.request(.randomSubBreedImage(breed: breed, subBreed: subBreed))
+    }
 }

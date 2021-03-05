@@ -93,7 +93,38 @@ final class NetworkTests: XCTestCase {
             }.disposed(by: disposeBag)
         waitForExpectations(timeout: 2)
     }
+
+    func test_get_breed_random_image_hound() {
+        //Given
+        let expect = expectation(description: "Waiting for request...")
+        
+        //When
+        api.getBreedRandomImage("hound")
+            .subscribe { response in
+                //Then
+                expect.fulfill()
+            } onError: { (error) in
+                //Then
+                XCTFail("Error \(error)")
+            }.disposed(by: disposeBag)
+        waitForExpectations(timeout: 2)
+    }
     
+    func test_get_subbreed_random_image_hound_afghan() {
+        //Given
+        let expect = expectation(description: "Waiting for request...")
+        
+        //When
+        api.getSubBreedRandomImage("hound", subBreed: "afghan")
+            .subscribe { response in
+                //Then
+                expect.fulfill()
+            } onError: { (error) in
+                //Then
+                XCTFail("Error \(error)")
+            }.disposed(by: disposeBag)
+        waitForExpectations(timeout: 2)
+    }
     static var allTests = [
         ("test_get_all_breeds", test_get_all_breeds),
         ("test_get_ramdom_image", test_get_ramdom_image),
